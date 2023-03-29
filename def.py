@@ -1,3 +1,9 @@
+import traceback
+try:
+    00000/0000000
+except:
+    print(traceback.format_exc())
+    
 def firstline():
     lines = []
     with open(r"t1.txt", 'r') as fp:
