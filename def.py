@@ -1,9 +1,18 @@
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import traceback
+
 try:
     00000/0000000
 except:
     print(traceback.format_exc())
-    
+######################
+driver.set_window_size(700,700)
+######################
+######################
+######################
 def firstline():
     lines = []
     with open(r"t1.txt", 'r') as fp:
@@ -13,7 +22,7 @@ def firstline():
             if number != 0:
                 fp.write(line)
     return lines[0].replace("\n","")
-
+######################
 def visibil_element(driver, by, selector, wait=10):
     element = False
     if by == 'name':
