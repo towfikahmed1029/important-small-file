@@ -12,7 +12,27 @@ my_dict = {
     'colwl': '2222',
     'coldwfl': 'efrf'
 }
+#####
+### multiple xl file add in one file...
+# all_data >
+#  data2, data3 , data4, data5, data6 ,data7, data8
+data_files = ['data3' , 'data4', 'data5', 'data6' ,'data7', 'data8']
 
+for data_file in data_files:
+    print(data_file , "Working on it.." )
+    workbook = openpyxl.load_workbook(f'{data_file}.xlsx') 
+    worksheet = workbook.active
+    list_dct = [] ### dictionary list
+    for row in worksheet.iter_rows(min_row=2, values_only=True):
+        row_dict = {}
+        for index, cell in enumerate(row):
+            key = worksheet[1][index].value
+            row_dict[key] = cell
+        list_dct.append(row_dict)
+        
+    add_data(list_dct,excel_file_name) ## add_data function
+    print("success")
+    
 ### Add Products Details in Excel Sheet By Dictionary
 def add_data(my_dict,excel_file_name):
     wb = openpyxl.load_workbook(excel_file_name)
