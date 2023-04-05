@@ -2,6 +2,8 @@ from openpyxl import Workbook,load_workbook
 import openpyxl
 import os
 import time
+import pandas as pd
+import glob
 
 excel_file_name = "product.xlsx"
 my_dict = {
@@ -14,6 +16,7 @@ my_dict = {
 }
 #####
 ### multiple xl file add in one file...
+###>>> general 
 # all_data >
 #  data2, data3 , data4, data5, data6 ,data7, data8
 data_files = ['data3' , 'data4', 'data5', 'data6' ,'data7', 'data8']
@@ -32,7 +35,16 @@ for data_file in data_files:
         
     add_data(list_dct,excel_file_name) ## add_data function
     print("success")
-    
+###>>> pandas
+excel_files = glob.glob("*.xlsx")
+
+dfs = []
+for file in excel_files:
+    df = pd.read_excel(file)
+    dfs.append(df)
+merged_df = pd.concat(dfs, ignore_index=True)
+merged_df.to_excel("merged_file.xlsx", index=False)
+
 ### Add Products Details in Excel Sheet By Dictionary
 def add_data(my_dict,excel_file_name):
     wb = openpyxl.load_workbook(excel_file_name)
@@ -79,6 +91,11 @@ for row_num in range(2, ws.max_row+1):
     else:
         unique_values.add(cell.value)
 wb.save(excel_file_name)
+###>>> pandas 
+df = pd.read_excel('merged_file.xlsx')
+df = df.drop_duplicates()
+df.to_excel('updated_data.xlsx', index=False)
+
 
 ### Excel Data change
 cell_row = 1
