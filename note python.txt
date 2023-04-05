@@ -2,7 +2,6 @@ requirement.txt file create comand:
 python3 -m  pipreqs.pipreqs .
 
 encriptrd python code:
-
 pip3 install pyarmor # pip/pip3#
 
 pyarmor obfuscate --restrict=0 <filename>
