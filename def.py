@@ -1,18 +1,10 @@
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 import traceback
-
+### Try catch Function For find line Number
 try:
     00000/0000000
 except:
     print(traceback.format_exc())
-######################
-driver.set_window_size(700,700)
-######################
-######################
-######################
+### First Line Catch
 def firstline():
     lines = []
     with open(r"t1.txt", 'r') as fp:
@@ -22,27 +14,3 @@ def firstline():
             if number != 0:
                 fp.write(line)
     return lines[0].replace("\n","")
-######################
-def visibil_element(driver, by, selector, wait=10):
-    element = False
-    if by == 'name':
-        byselector = By.NAME
-    if by == 'xpath':
-        byselector = By.XPATH
-    if by == 'css':
-        byselector = By.CSS_SELECTOR
-    if by == 'id':
-        byselector = By.ID
-    try:
-        element = WebDriverWait(driver, wait).until(
-            EC.visibility_of_element_located((byselector, selector)))
-    except Exception as e:
-        # print(e)
-        element = False
-    if element == False:
-        pass
-        # print("visibil_element not find: ", selector)
-    else:
-        pass
-        # print(selector)
-    return element
