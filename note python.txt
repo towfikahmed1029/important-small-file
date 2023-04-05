@@ -6,3 +6,6 @@ encriptrd python code:
 pip3 install pyarmor # pip/pip3#
 
 pyarmor obfuscate --restrict=0 <filename>
+
+### python to exe..
+"C:\Users\Walton Passion\AppData\Roaming\Python\Python310\Scripts\pyinstaller.exe" main.py
