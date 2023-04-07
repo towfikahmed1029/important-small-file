@@ -3,9 +3,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 
 driver.set_window_size(700,700)
 ### Auto driver install
+driver = webdriver.Chrome(ChromeDriverManager().install())
+###
 try:
     driver_path = chromedriver_autoinstaller.install()
     s = Service(driver_path)
