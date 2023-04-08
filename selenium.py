@@ -1,12 +1,15 @@
 import chromedriver_autoinstaller
 from selenium.webdriver.common.by import By
+from undetected_chromedriver import Chrome, ChromeOptions
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
-
+### Windo Size
 driver.set_window_size(700,700)
+### NEw Tab
+driver3.execute_script("window.open('');")
 ### Auto driver install
 driver = webdriver.Chrome(ChromeDriverManager().install())
 ###
@@ -18,8 +21,14 @@ try:
 except Exception:
     print("Driver Not found or Network Problem")
     sys.exit()
-    
+### Undetcted Chrome USe :
+options = ChromeOptions()
+options.add_argument("--disable-blink-features=AutomationControlled")
+
+driver = Chrome(options=options)
+
    ###### Element Find
+
   def visibil_element(driver, by, selector, wait=10): ### web element find and search
     element = False
     if by == 'name':
