@@ -11,12 +11,12 @@ driver.set_window_size(700,700)
 ### NEw Tab
 driver3.execute_script("window.open('');")
 ### Auto driver install
-driver = webdriver.Chrome(ChromeDriverManager().install())
+
+
 ###
 try:
-    driver_path = chromedriver_autoinstaller.install()
-    s = Service(driver_path)
-    driver = webdriver.Chrome(service=s)
+    path = chromedriver_autoinstaller.install()
+    driver = uc.Chrome(driver_executable_path=path)
     driver.set_window_size(850,630)
 except Exception:
     print("Driver Not found or Network Problem")
@@ -25,7 +25,7 @@ except Exception:
 options = ChromeOptions()
 options.add_argument("--disable-blink-features=AutomationControlled")
 
-driver = Chrome(options=options)
+driver = webdriver.Chrome(options=options)
 
    ###### Element Find
 
