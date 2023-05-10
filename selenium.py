@@ -6,6 +6,10 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
+from selenium import webdriver
+
+### driver wait
+driver.implicitly_wait(10)
 ### Windo Size
 driver.set_window_size(700,700)
 ### NEw Tab
