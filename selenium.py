@@ -16,7 +16,7 @@ driver.set_window_size(700,700)
 driver3.execute_script("window.open('');")
 ### Auto driver install
 
-
+driver.switch_to.window(driver.window_handles[1])
 ###
 try:
     path = chromedriver_autoinstaller.install()
