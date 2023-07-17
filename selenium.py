@@ -1,12 +1,30 @@
-import chromedriver_autoinstaller
-from selenium.webdriver.common.by import By
-from undetected_chromedriver import Chrome, ChromeOptions
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service
 from selenium import webdriver
+import time
+import csv
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver import ActionChains
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import chromedriver_autoinstaller
+from undetected_chromedriver import Chrome, ChromeOptions
+from webdriver_manager.chrome import ChromeDriverManager
+
+### v2 driver def
+def driver_define():
+    print('Chromedriver Installing')
+    driver_path = chromedriver_autoinstaller.install()
+    
+    print('Chrome Browser Opening')
+    options = Options()
+    options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    s = Service(driver_path)
+    driver = webdriver.Chrome(service=s, options =options)
+    return driver
+
+driver = driver_define()
 
 ### driver wait
 driver.implicitly_wait(10)
