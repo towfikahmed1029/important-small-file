@@ -4,3 +4,10 @@ def save_data(data):
         if file.tell() == 0:
             writer.writerow(["URL",'Email Address','Telephone','Website'])
         writer.writerow(data)
+### CSV to xL convert
+import pandas as pd
+csv_file = 'input.csv'
+excel_file = 'output.xlsx'
+df = pd.read_csv(csv_file)
+df.to_excel(excel_file, index=False)
+print(f"CSV file '{csv_file}' has been converted to Excel file '{excel_file}'.")
