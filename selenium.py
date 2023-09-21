@@ -16,7 +16,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 def driver_define():
     print('Chromedriver Installing')
     driver_path = chromedriver_autoinstaller.install()
-    
     print('Chrome Browser Opening')
     options = Options()
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
@@ -40,7 +39,6 @@ try:
     path = chromedriver_autoinstaller.install()
     driver = uc.Chrome(driver_executable_path=path)
     driver.set_window_size(850,630)
-
     driver_service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=driver_service)
     
@@ -50,31 +48,16 @@ except Exception:
 ### Undetcted Chrome USe :
 options = ChromeOptions()
 options.add_argument("--disable-blink-features=AutomationControlled")
-
 driver = webdriver.Chrome(options=options)
 
    ###### Element Find
-
   def visibil_element(driver, by, selector, wait=10): ### web element find and search
     element = False
-    if by == 'name':
-        byselector = By.NAME
     if by == 'xpath':
         byselector = By.XPATH
-    if by == 'css':
-        byselector = By.CSS_SELECTOR
-    if by == 'id':
-        byselector = By.ID
     try:
         element = WebDriverWait(driver, wait).until(
             EC.visibility_of_element_located((byselector, selector)))
     except Exception as e:
-        # print(e)
         element = False
-    if element == False:
-        pass
-        # print("visibil_element not find: ", selector)
-    else:
-        pass
-        # print(selector)
     return element
